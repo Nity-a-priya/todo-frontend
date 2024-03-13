@@ -150,6 +150,7 @@ li {
   cursor: pointer;
 }
 .row {
+  position: relative;
   font-size: x-large;
   padding: 15px;
   border-bottom: 0.5px solid;
@@ -172,9 +173,11 @@ img {
 }
 
 #done {
-  position: absolute;
   border-radius: 9px;
+  position: absolute;
 }
+
 .complete_div {
   cursor: not-allowed;
+  position: relative;
 }

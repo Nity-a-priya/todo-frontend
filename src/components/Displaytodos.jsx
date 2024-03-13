@@ -33,7 +33,6 @@ const Displaytodos = ({
                 id="done"
                 style={{ backgroundColor: "#5a6b59" }}
               />
-
               <DisplayEachTodo
                 todo={todo}
                 key={todo.id}
