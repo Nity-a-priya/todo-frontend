@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import DataContext from "../context/context";
 import EditContext from "../context/EditContext";
+import ToDoDataContext from "../context/ToDoDataContext";
 
 const Input = ({
   onSubmitData,
@@ -19,6 +20,7 @@ const Input = ({
   setDeleteDisability,
 }) => {
   const [setText, setDate] = useContext(DataContext);
+  const [todoData, setTodoData] = useContext(ToDoDataContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,7 +47,7 @@ const Input = ({
       setInputDisplay(false);
       setEditStatus({});
       setDeleteDisability({});
-      onSubmitData(data.data);
+      setTodoData(data.data);
     }
   };
 
