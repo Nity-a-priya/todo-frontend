@@ -23,17 +23,25 @@ const sortDates = (array) => {
   });
 };
 
-const renderCompletedCount = (datewiseTodos) => {
+const renderCompletedCount = (
+  datewiseTodos,
+  setEditDisability,
+  setDeleteDisability
+) => {
   let completeObject = {};
+  let disableID;
   datewiseTodos.forEach((calendarTodo, index) => {
     let count = 0;
     calendarTodo.todos.forEach((todo) => {
       if (todo.isCompleted) {
         count = count + 1;
+        disableID = { ...disableID, [todo.id]: true };
       }
     });
     completeObject = { ...completeObject, [index]: count };
   });
+  setDeleteDisability({ ...disableID });
+  setEditDisability({ ...disableID });
   return completeObject;
 };
 
@@ -52,7 +60,13 @@ const List = ({
   useEffect(() => {
     const datesWiseTodos = getDatesWiseTodos(todoData);
     const sortedDatewiseTodos = sortDates(datesWiseTodos);
-    set_no_of_completed(renderCompletedCount(sortedDatewiseTodos));
+    set_no_of_completed(
+      renderCompletedCount(
+        sortedDatewiseTodos,
+        setEditDisability,
+        setDeleteDisability
+      )
+    );
     setCalendarTodos(sortedDatewiseTodos);
   }, [todoData]);
 
