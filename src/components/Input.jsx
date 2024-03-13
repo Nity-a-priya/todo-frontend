@@ -53,16 +53,13 @@ const Input = ({
 
   const handleCancel = () => {
     const id = Number(Object.keys(editedItem)[0]);
-    console.log(id);
     setText("");
     setDate("");
     setAddButtonEnability(true);
     setInputDisplay(false);
     setEditStatus({});
-    console.log("-------", deleteDisabled);
     setDeleteDisability({ ...deleteDisabled, [id]: false });
   };
-  console.log(deleteDisabled);
   return (
     <>
       <input

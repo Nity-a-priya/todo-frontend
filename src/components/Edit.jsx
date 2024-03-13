@@ -17,10 +17,8 @@ const Edit = ({
 
   const handleEdit = (item, date, id) => {
     let deleteID = { [id]: true };
-    // console.log(item, date, id);
     if (Object.keys(isEdited).length != 0) {
       let oldID = Object.keys(isEdited)[0];
-      console.log("old ID ", oldID);
 
       setDeleteDisability({ ...deleteDisabled, [oldID]: false, ...deleteID });
     } else {
@@ -30,7 +28,6 @@ const Edit = ({
     setInputDisplay(true);
     setText(item);
     setDate(date);
-    console.log("***********", isEdited);
     let editID = { [id]: true };
     setEditStatus(editID);
   };

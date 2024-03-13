@@ -16,7 +16,6 @@ const DisplayEachTodo = ({
   const [todoData, setTodoData] = useContext(ToDoDataContext);
 
   const completed = async (TodoId, calendarID) => {
-    console.log(TodoId, calendarID);
     const method = "/completeSign";
     let body = {
       id: TodoId,
@@ -24,7 +23,6 @@ const DisplayEachTodo = ({
     const data = await axios.post(method, body);
     setTodoData(data.data);
     let disableID = { [TodoId]: true };
-    console.log(disableID);
     setDeleteDisability({ ...deleteDisabled, ...disableID });
     setEditDisability({ ...isEditDisabled, ...disableID });
   };

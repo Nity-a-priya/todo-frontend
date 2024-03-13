@@ -23,24 +23,36 @@ const sortDates = (array) => {
   });
 };
 
+const renderCompletedCount = (datewiseTodos) => {
+  let completeObject = {};
+  datewiseTodos.forEach((calendarTodo, index) => {
+    let count = 0;
+    calendarTodo.todos.forEach((todo) => {
+      if (todo.isCompleted) {
+        count = count + 1;
+      }
+    });
+    completeObject = { ...completeObject, [index]: count };
+  });
+  return completeObject;
+};
+
 const List = ({
   todoData,
   setAddButtonEnability,
-  
+
   deleteDisabled,
   setDeleteDisability,
   isEditDisabled,
   setEditDisability,
 }) => {
-  //   console.log(todoData);
-  const [no_of_completed, set_no_of_completed] = useState(0);
+  const [no_of_completed, set_no_of_completed] = useState({});
   const [calendarTodos, setCalendarTodos] = useState([]);
-
- 
 
   useEffect(() => {
     const datesWiseTodos = getDatesWiseTodos(todoData);
     const sortedDatewiseTodos = sortDates(datesWiseTodos);
+    set_no_of_completed(renderCompletedCount(sortedDatewiseTodos));
     setCalendarTodos(sortedDatewiseTodos);
   }, [todoData]);
 
@@ -53,7 +65,8 @@ const List = ({
               <div className="calendar_heading">
                 <h3 className="date">{calendarTodo.date}</h3>
                 <h4 className="count">
-                  Completed: {no_of_completed}/{calendarTodo.todos.length}
+                  Completed: {no_of_completed[index]}/
+                  {calendarTodo.todos.length}
                 </h4>
               </div>
               <div className="calendar_body" id={`calendar_body${index}`}>
@@ -66,7 +79,8 @@ const List = ({
                   setAddButtonEnability={setAddButtonEnability}
                   isEditDisabled={isEditDisabled}
                   setEditDisability={setEditDisability}
-               
+                  no_of_completed={no_of_completed}
+                  set_no_of_completed={set_no_of_completed}
                 />
               </div>
             </div>
