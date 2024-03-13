@@ -3,12 +3,15 @@ import axios from "axios";
 import DataContext from "../context/context";
 import "../styles/style.css";
 import Input from "./Input";
+import List from "./List";
 
 const ToDo = () => {
   //   const [data, setData] = useContext(DataContext);
   const [showInput, setInputDisplay] = useState(false);
   const [text, setText] = useState("");
   const [date, setDate] = useState("");
+  const [dataPresence, isdataPresent] = useState(false);
+  const [todoData, setTodoData] = useState(null);
 
   const addInput = () => {
     if (showInput) {
@@ -19,11 +22,15 @@ const ToDo = () => {
   };
 
   const showData = (data) => {
-    console.log("--->", JSON.stringify(data));
+    isdataPresent(true);
+    setTodoData(data);
+    // console.log("--->", JSON.stringify(data));
   };
 
   return (
-    <DataContext.Provider value={[text, setText, date, setDate]}>
+    <DataContext.Provider
+      value={[text, setText, date, setDate, showInput, setInputDisplay]}
+    >
       <div className="first-div">
         <div className="main-div">
           <div>
@@ -43,7 +50,9 @@ const ToDo = () => {
             <Input onSubmitData={showData} />
           </div>
 
-          <ul className="list"></ul>
+          <ul className="list">
+            {dataPresence && <List todoData={todoData} />}
+          </ul>
         </div>
       </div>
     </DataContext.Provider>

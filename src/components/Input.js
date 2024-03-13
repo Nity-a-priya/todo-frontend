@@ -10,11 +10,12 @@ const Input = (props) => {
     event.preventDefault();
     if (text != "" && date != "") {
       let body = {
-        text,
+        value: text,
         date,
       };
+      //   console.log(body);
       const data = await axios.post("/add", body);
-      console.log(JSON.stringify(data.data));
+      //   console.log(JSON.stringify(data.data));
       props.onSubmitData(data.data);
     }
   };
