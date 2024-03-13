@@ -23,16 +23,26 @@ const sortDates = (array) => {
   });
 };
 
-const List = (props) => {
-  console.log(props.todoData);
+const List = ({
+  todoData,
+  setAddButtonEnability,
+  editedToDoID,
+  deleteDisabled,
+  setDeleteDisability,
+}) => {
+  //   console.log(todoData);
   const [no_of_completed, set_no_of_completed] = useState(0);
   const [calendarTodos, setCalendarTodos] = useState([]);
 
+  const idOfEditTodo = (id) => {
+    editedToDoID(id);
+  };
+
   useEffect(() => {
-    const datesWiseTodos = getDatesWiseTodos(props.todoData);
+    const datesWiseTodos = getDatesWiseTodos(todoData);
     const sortedDatewiseTodos = sortDates(datesWiseTodos);
     setCalendarTodos(sortedDatewiseTodos);
-  }, [props.todoData]);
+  }, [todoData]);
 
   return (
     <>
@@ -50,6 +60,10 @@ const List = (props) => {
                 <Displaytodo
                   calendarTodos={calendarTodo}
                   calendarIndex={index}
+                  deleteDisabled={deleteDisabled}
+                  setDeleteDisability={setDeleteDisability}
+                  setAddButtonEnability={setAddButtonEnability}
+                  idOfEditTodo={idOfEditTodo}
                 />
               </div>
             </div>

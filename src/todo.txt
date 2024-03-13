@@ -7,11 +7,11 @@ add button --> done
 submit button
 -- hide input, clear values --> done
 -- display todos --> done
--- edit
+-- edit --> done
 -- delete
 -- complete
 cancel button
--- hide input, clear values
+-- hide input, clear values --> done
 
 enable add button
 disable add button

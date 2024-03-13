@@ -1,30 +1,41 @@
-const Displaytodo = (props) => {
-  const completed = () => {};
-  const handleEdit = () => {};
+import { useState } from "react";
+import EditButton from "./Edit";
+import DeleteButton from "./Delete";
 
-  const handleDelete = () => {};
+const Displaytodo = ({
+  calendarTodos,
+  calendarIndex,
+  deleteDisabled,
+  setDeleteDisability,
+  setAddButtonEnability,
+  idOfEditTodo,
+}) => {
+  const completed = () => {};
+
+  const sendEditedToDoID = (id) => {
+    idOfEditTodo(id);
+  };
 
   return (
     <>
-      {props.calendarTodos.todos.map((todo) => {
+      {calendarTodos.todos.map((todo) => {
         return (
           <div className="row" id={`items${todo.id}`} key={todo.id}>
             <li
               id="li"
-              onClick={completed(todo.id, props.calendarIndex)}
+              onClick={completed(todo.id, calendarIndex)}
               style={{ color: "black" }}
             >
               {todo.item}
             </li>
-            <button
-              id="edit"
-              onClick={handleEdit(todo.item, todo.date, todo.id)}
-            >
-              <img src="./pen-to-square-solid.svg" />
-            </button>
-            <button id="delete" onClick={handleDelete(todo.id)}>
-              <img src="./dustbin.jpeg" />
-            </button>
+            <EditButton
+              todo={todo}
+              setDeleteDisability={setDeleteDisability}
+              deleteDisabled={deleteDisabled}
+              setAddButtonEnability={setAddButtonEnability}
+              editedTodo={sendEditedToDoID}
+            />
+            <DeleteButton todo={todo} deleteDisabled={deleteDisabled} />
           </div>
         );
       })}
