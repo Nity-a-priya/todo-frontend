@@ -23,6 +23,7 @@ const Input = ({
   const [todoData, setTodoData] = useContext(ToDoDataContext);
 
   const handleSubmit = async (event) => {
+    const id = Number(Object.keys(editedItem)[0]);
     event.preventDefault();
 
     if (text != "" && date != "") {
@@ -32,7 +33,6 @@ const Input = ({
         date,
       };
       if (Object.values(editedItem)[0]) {
-        const id = Number(Object.keys(editedItem)[0]);
         body = {
           value: text,
           date,
@@ -46,19 +46,23 @@ const Input = ({
       setAddButtonEnability(true);
       setInputDisplay(false);
       setEditStatus({});
-      setDeleteDisability({});
+      setDeleteDisability({ ...deleteDisabled, [id]: false });
       setTodoData(data.data);
     }
   };
 
   const handleCancel = () => {
+    const id = Number(Object.keys(editedItem)[0]);
+    console.log(id);
     setText("");
     setDate("");
     setAddButtonEnability(true);
     setInputDisplay(false);
     setEditStatus({});
-    setDeleteDisability({});
+    console.log("-------", deleteDisabled);
+    setDeleteDisability({ ...deleteDisabled, [id]: false });
   };
+  console.log(deleteDisabled);
   return (
     <>
       <input

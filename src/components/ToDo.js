@@ -17,6 +17,7 @@ const ToDo = () => {
   const [enableAddButton, setAddButtonEnability] = useState(true);
   const [isEdited, setEditStatus] = useState({});
   const [deleteDisabled, setDeleteDisability] = useState({});
+  const [isEditDisabled, setEditDisability] = useState({});
 
   const addInput = () => {
     if (showInput) {
@@ -27,8 +28,8 @@ const ToDo = () => {
   };
 
   const editedToDoID = (id) => {
-    let editID = { [id]: true };
-    setEditStatus(editID);
+    // let editID = { [id]: true };
+    // setEditStatus(editID);
   };
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const ToDo = () => {
     };
 
     fetchData();
-  }, [todoData]);
+  }, []);
 
   return (
     <InputContext.Provider value={setInputDisplay}>
@@ -89,9 +90,10 @@ const ToDo = () => {
                     <List
                       todoData={todoData}
                       setAddButtonEnability={setAddButtonEnability}
-                      editedToDoID={editedToDoID}
                       deleteDisabled={deleteDisabled}
                       setDeleteDisability={setDeleteDisability}
+                      isEditDisabled={isEditDisabled}
+                      setEditDisability={setEditDisability}
                     />
                   )}
                 </ul>

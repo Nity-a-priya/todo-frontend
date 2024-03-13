@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Displaytodo from "./Displaytodo";
+import Displaytodos from "./Displaytodos";
 const getDatesWiseTodos = (data) => {
   return data.reduce((datesWiseTodos, todo) => {
     const index = datesWiseTodos.findIndex(
@@ -26,17 +26,17 @@ const sortDates = (array) => {
 const List = ({
   todoData,
   setAddButtonEnability,
-  editedToDoID,
+  
   deleteDisabled,
   setDeleteDisability,
+  isEditDisabled,
+  setEditDisability,
 }) => {
   //   console.log(todoData);
   const [no_of_completed, set_no_of_completed] = useState(0);
   const [calendarTodos, setCalendarTodos] = useState([]);
 
-  const idOfEditTodo = (id) => {
-    editedToDoID(id);
-  };
+ 
 
   useEffect(() => {
     const datesWiseTodos = getDatesWiseTodos(todoData);
@@ -57,13 +57,16 @@ const List = ({
                 </h4>
               </div>
               <div className="calendar_body" id={`calendar_body${index}`}>
-                <Displaytodo
+                <Displaytodos
                   calendarTodos={calendarTodo}
+                  key={index}
                   calendarIndex={index}
                   deleteDisabled={deleteDisabled}
                   setDeleteDisability={setDeleteDisability}
                   setAddButtonEnability={setAddButtonEnability}
-                  idOfEditTodo={idOfEditTodo}
+                  isEditDisabled={isEditDisabled}
+                  setEditDisability={setEditDisability}
+               
                 />
               </div>
             </div>
