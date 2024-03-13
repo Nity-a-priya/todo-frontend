@@ -12,6 +12,7 @@ const ToDo = () => {
   const [date, setDate] = useState("");
   const [dataPresence, isdataPresent] = useState(false);
   const [todoData, setTodoData] = useState(null);
+  const [enableAddButton, setAddButtonEnability] = useState(true);
 
   const addInput = () => {
     if (showInput) {
@@ -22,19 +23,35 @@ const ToDo = () => {
   };
 
   const showData = (data) => {
+    setAddButtonEnability(true);
+    setInputDisplay(false);
     isdataPresent(true);
     setTodoData(data);
+
     // console.log("--->", JSON.stringify(data));
   };
 
   return (
     <DataContext.Provider
-      value={[text, setText, date, setDate, showInput, setInputDisplay]}
+      value={[
+        text,
+        setText,
+        date,
+        setDate,
+        showInput,
+        setInputDisplay,
+        enableAddButton,
+        setAddButtonEnability,
+      ]}
     >
       <div className="first-div">
         <div className="main-div">
           <div>
-            <button className="add" onClick={addInput}>
+            <button
+              className="add"
+              onClick={addInput}
+              disabled={!enableAddButton}
+            >
               ADD
             </button>
 

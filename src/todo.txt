@@ -1,0 +1,19 @@
+useState -> done
+useEffect --> done
+useContext --> done
+
+
+add button --> done
+submit button
+-- hide input, clear values --> done
+-- display todos --> done
+-- edit
+-- delete
+-- complete
+cancel button
+-- hide input, clear values
+
+enable add button
+disable add button
+hide input
+edit

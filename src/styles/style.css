@@ -120,7 +120,7 @@ ul {
 .calendar_heading {
   display: flex;
   justify-content: center;
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   border-bottom: 1px solid;
   background-color: rgb(118 32 60 / 79%);
