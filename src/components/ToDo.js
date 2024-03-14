@@ -7,13 +7,14 @@ import ToDoDataContext from "../context/ToDoDataContext";
 import "../styles/style.css";
 import Input from "./Input";
 import List from "./List";
+import { getRequest, postReq } from "../helpers/helpers";
 
 const ToDo = () => {
   //   const [data, setData] = useContext(DataContext);
   const [showInput, setInputDisplay] = useState(false);
   const [text, setText] = useState("");
   const [date, setDate] = useState("");
-  const [todoData, setTodoData] = useState(null);
+  const [todoData, setTodoData] = useState([]);
   const [enableAddButton, setAddButtonEnability] = useState(true);
   const [isEdited, setEditStatus] = useState({});
   const [deleteDisabled, setDeleteDisability] = useState({});
@@ -33,9 +34,10 @@ const ToDo = () => {
   };
 
   useEffect(() => {
-    const fetchData = () => {
+    const fetchData = async () => {
       try {
-        axios.get("/get").then((response) => setTodoData(response.data));
+        const data = await getRequest("/get");
+        setTodoData(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

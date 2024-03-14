@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import ToDoDataContext from "../context/ToDoDataContext";
 import axios from "axios";
+import { getRequest, postReq } from "../helpers/helpers";
 
 const Delete = ({ todo, deleteDisabled }) => {
   const [todoData, setTodoData] = useContext(ToDoDataContext);
@@ -10,8 +11,8 @@ const Delete = ({ todo, deleteDisabled }) => {
     let body = {
       index: id,
     };
-    const data = await axios.post(method, body);
-    setTodoData(data.data);
+    const data = await postReq(method, body);
+    setTodoData(data);
   };
 
   return (

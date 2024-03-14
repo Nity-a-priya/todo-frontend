@@ -58,6 +58,7 @@ const List = ({
   const [calendarTodos, setCalendarTodos] = useState([]);
 
   useEffect(() => {
+    console.log(todoData);
     const datesWiseTodos = getDatesWiseTodos(todoData);
     const sortedDatewiseTodos = sortDates(datesWiseTodos);
     set_no_of_completed(

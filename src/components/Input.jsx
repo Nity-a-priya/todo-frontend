@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import DataContext from "../context/context";
 import EditContext from "../context/EditContext";
 import ToDoDataContext from "../context/ToDoDataContext";
+import { getRequest, postReq } from "../helpers/helpers";
 
 const Input = ({
   onSubmitData,
@@ -40,14 +41,14 @@ const Input = ({
         };
         method = "/edit";
       }
-      const data = await axios.post(method, body);
+      const data = await postReq(method, body);
       setText("");
       setDate("");
       setAddButtonEnability(true);
       setInputDisplay(false);
       setEditStatus({});
       setDeleteDisability({ ...deleteDisabled, [id]: false });
-      setTodoData(data.data);
+      setTodoData(data);
     }
   };
 
