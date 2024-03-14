@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Displaytodos from "./Displaytodos";
+
 const getDatesWiseTodos = (data) => {
   return data.reduce((datesWiseTodos, todo) => {
     const index = datesWiseTodos.findIndex(
@@ -48,7 +49,6 @@ const renderCompletedCount = (
 const List = ({
   todoData,
   setAddButtonEnability,
-
   deleteDisabled,
   setDeleteDisability,
   isEditDisabled,

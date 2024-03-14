@@ -1,16 +1,11 @@
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import DataContext from "../context/context";
-import EditContext from "../context/EditContext";
 import ToDoDataContext from "../context/ToDoDataContext";
-import { getRequest, postReq } from "../helpers/helpers";
+import { postReq } from "../helpers/helpers";
 
 const Input = ({
-  onSubmitData,
   text,
-
   date,
-
   showInput,
   setInputDisplay,
   enableAddButton,

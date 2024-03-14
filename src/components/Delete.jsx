@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import ToDoDataContext from "../context/ToDoDataContext";
-import axios from "axios";
-import { getRequest, postReq } from "../helpers/helpers";
+import { postReq } from "../helpers/helpers";
 
 const Delete = ({ todo, deleteDisabled }) => {
   const [todoData, setTodoData] = useContext(ToDoDataContext);

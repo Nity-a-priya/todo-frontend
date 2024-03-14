@@ -1,7 +1,4 @@
 import "../styles/login.css";
-import { Link } from "react-router-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { getRequest } from "../helpers/helpers";
 
 const Login = () => {
   return (

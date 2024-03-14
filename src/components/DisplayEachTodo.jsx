@@ -1,9 +1,8 @@
 import EditButton from "./Edit";
 import DeleteButton from "./Delete";
-import { useContext, useState } from "react";
-import axios from "axios";
+import { useContext } from "react";
 import ToDoDataContext from "../context/ToDoDataContext";
-import { getRequest, postReq } from "../helpers/helpers";
+import { postReq } from "../helpers/helpers";
 
 const DisplayEachTodo = ({
   todo,
@@ -21,7 +20,7 @@ const DisplayEachTodo = ({
     let body = {
       id: TodoId,
     };
-    const data = await postReq(method,body)
+    const data = await postReq(method, body);
     setTodoData(data);
     let disableID = { [TodoId]: true };
     setDeleteDisability({ ...deleteDisabled, ...disableID });

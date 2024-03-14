@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import DataContext from "../context/context";
 import InputContext from "../context/InputContext";
 import EditContext from "../context/EditContext";
@@ -7,10 +6,9 @@ import ToDoDataContext from "../context/ToDoDataContext";
 import "../styles/style.css";
 import Input from "./Input";
 import List from "./List";
-import { getRequest, postReq } from "../helpers/helpers";
+import { getRequest } from "../helpers/helpers";
 
 const ToDo = () => {
-  //   const [data, setData] = useContext(DataContext);
   const [showInput, setInputDisplay] = useState(false);
   const [text, setText] = useState("");
   const [date, setDate] = useState("");
@@ -26,11 +24,6 @@ const ToDo = () => {
     } else {
       setInputDisplay(true);
     }
-  };
-
-  const editedToDoID = (id) => {
-    // let editID = { [id]: true };
-    // setEditStatus(editID);
   };
 
   useEffect(() => {
