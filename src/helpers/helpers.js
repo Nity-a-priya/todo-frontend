@@ -2,8 +2,6 @@ import axios from "axios";
 
 const getRequest = async (url) => {
   const response = await axios.get(url);
-  console.log(response.request.responseURL);
-  console.log(response);
   if (response.request.responseURL.includes("/login")) {
     window.location.href = response.request.responseURL;
   } else {
